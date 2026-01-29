@@ -23,10 +23,9 @@ corporate_content <- function(...) {
   )
 }
 
-corporate_footer(
-  tagList(
-    tags$p("© 2026 Swiss Research Institute"),
-    tags$p("Internal use only"),
-    tags$p("Contact: data@institute.ch")
+corporate_footer <- function(...) {
+  tags$footer(
+    class = "app-footer",
+    ...
   )
-)
+}
