@@ -49,4 +49,4 @@ ui <- fluidPage(
 
 dashboard_server(input, output, session)
 
-shinyApp(ui, server)
+shinyApp(ui, dashboard_server)

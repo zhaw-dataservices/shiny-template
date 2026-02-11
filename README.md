@@ -55,6 +55,12 @@ dashboard_server <- function(input, output, session) {
 }
 ```
 
+#### Data
+
+Load static datasets at the top of `dashboard_server.R`, above the
+`dashboard_server()` function. Use `reactive()` only if data must update during runtime.
+
+
 ### Branding and legal notice
 
 Edit `config.yml`:

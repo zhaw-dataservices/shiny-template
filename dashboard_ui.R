@@ -1,33 +1,27 @@
 # -----------------------------------------------------------------------------
-# Dashboard UI -- *TO BE EDITED*
+# Dashboard Server Logic -- *TO BE EDITED*
 #
-# Defines UI and dashboard content.
+# Defines server-side logic for the dashboard.
 #
+# Load static datasets above the server function so they are read once
+# when the app starts (recommended).
 # -----------------------------------------------------------------------------
 
-#' Dashboard UI
+# Example:
+# data <- readRDS("data/data.rds")
+
+
+#' Server
 #'
-#' Defines the UI for the dashboard content area. This function should return a
-#' Shiny UI object (e.g., a tagList or a div) that contains
-#' application-specific UI elements.
+#' Defines server-side logic for the dashboard.
 #'
-#' @return A Shiny UI object representing the dashboard content.
-dashboard_ui <- function() {
+#' @param input Shiny input object.
+#' @param output Shiny output object.
+#' @param session Shiny session object.
+#'
+#' @return None. Registers reactive behavior.
+dashboard_server <- function(input, output, session) {
 
-  tagList(
+  # Use reactive() only if data must update during runtime.
 
-    fluidRow(
-      column(
-        12,
-        p("This dashboard provides an overview of municipalities.")
-      )
-    ),
-
-    fluidRow(
-      column(4, wellPanel(h4("Cantons"), h2("26"))),
-      column(4, wellPanel(h4("Municipalities"), h2("2,131"))),
-      column(4, wellPanel(h4("Last update"), h2("2026-01-15")))
-    )
-
-  )
 }
