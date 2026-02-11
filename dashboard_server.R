@@ -3,7 +3,13 @@
 #
 # Defines server-side logic for the dashboard.
 #
-# ---------------------------------------------------------------------------
+# Load static datasets above the server function so they are read once
+# when the app starts (recommended).
+# -----------------------------------------------------------------------------
+
+# Example:
+# data <- readRDS("data/data.rds")
+
 
 #' Server
 #'
@@ -15,4 +21,7 @@
 #'
 #' @return None. Registers reactive behavior.
 dashboard_server <- function(input, output, session) {
+
+  # Use reactive() only if data must update during runtime.
+
 }
