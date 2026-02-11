@@ -1,6 +1,6 @@
 title: "Dashboard title"
 
-brand: "black" # options are: standard | black
+brand: "standard" # options are: standard | black
 
 legal_notice:
   - "ZHAW Zurich University of Applied Sciences"

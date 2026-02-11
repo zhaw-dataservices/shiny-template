@@ -43,3 +43,4 @@ vignettes/*.pdf
 
 # project specific
 /config/secrets.yml
+to_do.md

@@ -1,10 +1,21 @@
-/* Design tokens (global variables) */
+/* Application Stylesheet.
+
+   Defines layout and structural styles for the ZHAW
+   Shiny dashboard template.
+
+   This file contains presentation rules only.
+   Branding decisions and runtime logic are handled in R.
+*/
+
+
+/* Design tokens (global spacing variables) */
 :root {
   --app-padding-y: 10px;
   --app-padding-x: 20px;
 }
 
-/* Global typography */
+
+/* Global typography and base layout reset */
 html, body {
   font-family: Helvetica, Arial, sans-serif;
   background-color: #ffffff;
@@ -13,14 +24,16 @@ html, body {
   margin: 0;
 }
 
-/* Main app page layout */
+
+/* Main application layout container */
 .app-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Corporate header */
+
+/* Header section containing logo and title */
 .app-header {
   padding: var(--app-padding-y) var(--app-padding-x);
   display: flex;
@@ -29,19 +42,21 @@ html, body {
   border-bottom: 1px solid #e6e6e6;
 }
 
-/* Custom app content area */
+
+/* Main content wrapper between header and footer */
 .app-content {
   padding: var(--app-padding-y) var(--app-padding-x);
   flex: 1; /* push footer to bottom */
 }
 
-/* Corporate footer */
+
+/* Footer section containing legal and institutional information */
 .app-footer {
   padding: var(--app-padding-y) var(--app-padding-x);
   background-color: #ffffff;
   border-top: 1px solid #e6e6e6;
   font-size: 12px;
-  line-height: 0.8;
+  line-height: 1;
   text-align: left;
   color: #0064A8;
 }
