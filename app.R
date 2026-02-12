@@ -47,6 +47,4 @@ ui <- fluidPage(
   )
 )
 
-dashboard_server(input, output, session)
-
 shinyApp(ui, dashboard_server)
