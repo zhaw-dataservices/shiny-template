@@ -2,7 +2,6 @@
 # Dashboard UI -- *TO BE EDITED*
 #
 # Defines UI and dashboard content.
-#
 # -----------------------------------------------------------------------------
 
 #' Dashboard UI
