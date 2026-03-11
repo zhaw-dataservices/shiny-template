@@ -38,12 +38,6 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# macOS files
+# macOS / VS Code files
 .DS_Store
-
-# VS Code files
 .vscode/
-
-# project specific
-/config/secrets.yml
-to_do.md
