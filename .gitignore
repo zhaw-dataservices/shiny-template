@@ -41,6 +41,9 @@ vignettes/*.pdf
 # macOS files
 .DS_Store
 
+# VS Code files
+.vscode/
+
 # project specific
 /config/secrets.yml
 to_do.md
