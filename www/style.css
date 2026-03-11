@@ -93,3 +93,8 @@ a:hover {
   text-align: left;
   color: #0064a6; /* ZHAW blue — aligned with LimeSurvey template */
 }
+
+/* Black brand variant: override footer color */
+.brand-black .app-footer {
+  color: #000000;
+}

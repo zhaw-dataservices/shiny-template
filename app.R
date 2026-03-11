@@ -7,7 +7,7 @@
 #   - Assemble UI structure
 #   - Initialize Shiny application
 #
-# Application-specific content should be defined in `dashboard_content.R``.
+# Application-specific content should be defined in `dashboard_ui.R`.
 # Application logic should be defined in `dashboard_server.R.
 # -----------------------------------------------------------------------------
 
@@ -17,7 +17,19 @@ library(yaml)
 
 config <- yaml::read_yaml("config.yml")
 
-source("ui_layout.R")
+# Validate config
+if (is.null(config$title) || !nzchar(config$title)) {
+  stop("config.yml: 'title' is missing or empty.")
+}
+valid_brands <- c("standard", "black")
+if (!config$brand %in% valid_brands) {
+  stop(sprintf(
+    "config.yml: 'brand' must be one of: %s. Got: '%s'.",
+    paste(valid_brands, collapse = ", "), config$brand
+  ))
+}
+
+source("template/layout.R")
 source("dashboard_ui.R")
 source("dashboard_server.R")
 
@@ -41,7 +53,6 @@ ui <- fluidPage(
     ),
 
     corporate_footer(
-      brand = config$brand,
       render_legal_notice(config$legal_notice)
     )
   )

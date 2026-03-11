@@ -53,23 +53,15 @@ corporate_content <- function(...) {
 
 #' Corporate Footer
 #'
-#' Creates the footer section. The footer color depends on the selected brand.
+#' Creates the footer section. Footer color is controlled by the brand CSS
+#' class on the outer `.app-page` container (e.g. `.brand-black .app-footer`).
 #'
-#' @param brand Character string. Either "standard" or "black".
 #' @param ... UI elements to include inside the footer.
 #'
 #' @return A <footer> tag element.
-corporate_footer <- function(brand, ...) {
-
-  footer_style <- if (brand == "black") {
-    "color: #000000;"
-  } else {
-    NULL  # keep CSS default (blue)
-  }
-
+corporate_footer <- function(...) {
   tags$footer(
     class = "app-footer",
-    style = footer_style,
     ...
   )
 }

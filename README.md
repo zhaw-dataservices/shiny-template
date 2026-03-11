@@ -13,18 +13,35 @@ If you are new to Shiny, see the [official Shiny getting started tutorial](https
 
 ---
 
+## Quickstart
+
+1. Clone or copy this repository.
+2. Open `config.yml` and set your title, brand, and legal notice.
+3. Open `dashboard_ui.R` and add your UI elements inside `dashboard_ui()`.
+4. Open `dashboard_server.R` and add your server logic inside `dashboard_server()`.
+5. Run the app:
+
+```r
+shiny::runApp()
+```
+
+That's it. You do not need to touch any other file.
+
+---
+
 ## File structure
 
 ```
-app.R                 # Application entry point (do not modify)
-ui_layout.R           # Layout helpers (header, footer, content wrapper)
+app.R                       # Application entry point (do not modify)
+template/
+  layout.R               # Layout helpers (do not modify)
 
-dashboard_ui.R        # Edit this – dashboard UI content
-dashboard_server.R    # Edit this – dashboard server logic
+dashboard_ui.R              # Edit this – dashboard UI content
+dashboard_server.R          # Edit this – dashboard server logic
 
-config.yml            # Branding and legal configuration
+config.yml                  # Branding and legal configuration
 www/
-  style.css           # Styling
+  style.css                 # Styling
   logo-standard.png
   logo-black.png
 ```
@@ -83,7 +100,7 @@ legal_notice:
 ## Do not edit
 
 - `app.R`
-- `ui_layout.R`
+- `template/layout.R`
 
 These files define the structural template and should remain unchanged.
 
