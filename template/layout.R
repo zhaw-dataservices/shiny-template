@@ -79,12 +79,30 @@ corporate_footer <- function(...) {
 }
 
 
+# Finds the first email address in a string and wraps it in a mailto link.
+# Returns a tagList with the surrounding text preserved, or plain text if no
+# email is found.
+linkify_email <- function(text) {
+  m <- regexpr("[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}", text, perl = TRUE)
+  if (m == -1) return(text)
+  start <- as.integer(m)
+  end   <- start + attr(m, "match.length") - 1
+  email <- substr(text, start, end)
+  tagList(
+    substr(text, 1, start - 1),
+    tags$a(href = paste0("mailto:", email), email),
+    substr(text, end + 1, nchar(text))
+  )
+}
+
+
 #' Render Legal Notice
 #'
 #' Renders legal notice from a named config list:
-#'   - institution: first line, always shown
+#'   - institution: first line, always shown, bold
 #'   - unit:        second line (label + optional link), hidden if label is blank
-#'   - department, institute, contact: joined by " · " on the third line
+#'   - department, institute, contact: joined by " · " on the third line;
+#'     any email address in contact is automatically made into a mailto link
 #'
 #' @param cfg Named list with keys: institution, unit, department, institute, contact.
 #'
@@ -93,7 +111,7 @@ render_legal_notice <- function(cfg) {
   lines <- list()
 
   if (!is.null(cfg$institution) && nzchar(cfg$institution))
-    lines <- c(lines, list(tags$p(cfg$institution)))
+    lines <- c(lines, list(tags$p(tags$strong(cfg$institution))))
 
   if (!is.null(cfg$unit$label) && nzchar(cfg$unit$label)) {
     has_link <- !is.null(cfg$unit$link_url) && nzchar(cfg$unit$link_url) &&
@@ -106,9 +124,21 @@ render_legal_notice <- function(cfg) {
     lines <- c(lines, list(tags$p(unit_el)))
   }
 
-  dot_items <- Filter(nzchar, c(cfg$department, cfg$institute, cfg$contact))
-  if (length(dot_items) > 0)
-    lines <- c(lines, list(tags$p(paste(dot_items, collapse = " · "))))
+  # Build third line item by item so contact can contain a linked email
+  parts <- list()
+  for (key in c("department", "institute", "contact")) {
+    val <- cfg[[key]]
+    if (!is.null(val) && nzchar(val))
+      parts <- c(parts, list(if (key == "contact") linkify_email(val) else val))
+  }
+  if (length(parts) > 0) {
+    interleaved <- list()
+    for (i in seq_along(parts)) {
+      interleaved <- c(interleaved, list(parts[[i]]))
+      if (i < length(parts)) interleaved <- c(interleaved, list(" · "))
+    }
+    lines <- c(lines, list(tags$p(do.call(tagList, interleaved))))
+  }
 
   do.call(tagList, lines)
 }
