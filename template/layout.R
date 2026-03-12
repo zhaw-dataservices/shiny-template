@@ -18,9 +18,20 @@
 #'
 #' @param title Character string. Dashboard title displayed in the header.
 #' @param logo Character string. Filename of the logo located in /www.
+#' @param links Optional list of named lists with 'label' and 'url' entries,
+#'   rendered as navigation links on the right side of the header.
 #'
 #' @return A <header> tag element.
-corporate_header <- function(title, logo) {
+corporate_header <- function(title, logo, links = NULL) {
+  nav_links <- if (!is.null(links)) {
+    tags$nav(
+      class = "app-header-nav",
+      lapply(links, function(link) {
+        tags$a(href = link$url, link$label, target = "_blank")
+      })
+    )
+  }
+
   tags$header(
     class = "app-header",
     tags$img(
@@ -31,7 +42,8 @@ corporate_header <- function(title, logo) {
     tags$h1(
       title,
       class = "app-title"
-    )
+    ),
+    nav_links
   )
 }
 
@@ -69,13 +81,34 @@ corporate_footer <- function(...) {
 
 #' Render Legal Notice
 #'
-#' Renders legal notice items as a single line separated by dots.
+#' Renders legal notice from a named config list:
+#'   - institution: first line, always shown
+#'   - unit:        second line (label + optional link), hidden if label is blank
+#'   - department, institute, contact: joined by " · " on the third line
 #'
-#' @param lines Character vector containing legal notice entries.
+#' @param cfg Named list with keys: institution, unit, department, institute, contact.
 #'
-#' @return A <p> tag element.
-render_legal_notice <- function(lines) {
-  tags$p(
-    paste(lines, collapse = " · ")
-  )
+#' @return A tagList of <p> elements.
+render_legal_notice <- function(cfg) {
+  lines <- list()
+
+  if (!is.null(cfg$institution) && nzchar(cfg$institution))
+    lines <- c(lines, list(tags$p(cfg$institution)))
+
+  if (!is.null(cfg$unit$label) && nzchar(cfg$unit$label)) {
+    has_link <- !is.null(cfg$unit$link_url) && nzchar(cfg$unit$link_url) &&
+                !is.null(cfg$unit$link_text) && nzchar(cfg$unit$link_text)
+    unit_el <- if (has_link)
+      tagList(cfg$unit$label, " · ",
+        tags$a(href = cfg$unit$link_url, cfg$unit$link_text, target = "_blank"))
+    else
+      cfg$unit$label
+    lines <- c(lines, list(tags$p(unit_el)))
+  }
+
+  dot_items <- Filter(nzchar, c(cfg$department, cfg$institute, cfg$contact))
+  if (length(dot_items) > 0)
+    lines <- c(lines, list(tags$p(paste(dot_items, collapse = " · "))))
+
+  do.call(tagList, lines)
 }

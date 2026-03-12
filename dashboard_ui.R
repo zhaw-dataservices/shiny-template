@@ -12,11 +12,42 @@
 #'
 #' @return A Shiny UI object representing the dashboard content.
 dashboard_ui <- function() {
-
-  # Example UI content:
   tagList(
-    h2("Dashboard content"),
-    p("This is where you can add your dashboard's UI elements."),
-    p("Use Shiny's UI functions to create interactive components, visualizations, and more.")
+    h2("Palmer Penguins Explorer"),
+    p("Explore body measurements of three penguin species observed on islands in the Palmer Archipelago, Antarctica."),
+
+    fluidRow(
+      column(4,
+        selectInput("species", "Species",
+          choices = c("All", "Adelie", "Chinstrap", "Gentoo"),
+          selected = "All"
+        )
+      ),
+      column(4,
+        selectInput("x_var", "X axis",
+          choices = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"),
+          selected = "bill_length_mm"
+        )
+      ),
+      column(4,
+        selectInput("y_var", "Y axis",
+          choices = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"),
+          selected = "flipper_length_mm"
+        )
+      )
+    ),
+
+    plotOutput("scatter", height = "400px"),
+
+    hr(),
+
+    h3("Summary statistics"),
+    tableOutput("summary"),
+
+    hr(),
+
+    h3("Raw data"),
+    p("Showing first 50 rows."),
+    tableOutput("table")
   )
 }

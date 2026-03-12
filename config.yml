@@ -1,9 +1,17 @@
 title: "Dashboard title"
 
-brand: "standard" # options are: standard | black
+header_links:
+  - label: "Datenschutz"
+    url: "https://www.zhaw.ch/de/datenschutz/"
+  - label: "Rechtliche Hinweise"
+    url: "https://www.zhaw.ch/de/rechtliche-hinweise/"
 
 legal_notice:
-  - "ZHAW Zurich University of Applied Sciences"
-  - "Department"
-  - "Institute"
-  - "Contact"
+  institution: "ZHAW Zurich University of Applied Sciences"
+  unit:
+    label: "Unit"       # leave blank to hide
+    link_text: "Link to unit"   # optional: display text for the link
+    link_url: "linktoun.it"    # optional: URL for the link
+  department: "Department"
+  institute: "Institute"
+  contact: "Contact"

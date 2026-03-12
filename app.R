@@ -21,31 +21,22 @@ config <- yaml::read_yaml("config.yml")
 if (is.null(config$title) || !nzchar(config$title)) {
   stop("config.yml: 'title' is missing or empty.")
 }
-valid_brands <- c("standard", "black")
-if (!config$brand %in% valid_brands) {
-  stop(sprintf(
-    "config.yml: 'brand' must be one of: %s. Got: '%s'.",
-    paste(valid_brands, collapse = ", "), config$brand
-  ))
-}
 
 source("template/layout.R")
 source("dashboard_ui.R")
 source("dashboard_server.R")
-
-brand_class <- paste0("brand-", config$brand)
-logo_file   <- "logo-negativ.png" # negative logo for blue header
 
 ui <- fluidPage(
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
   ),
   div(
-    class = paste("app-page", brand_class),
+    class = "app-page",
 
     corporate_header(
       title = config$title,
-      logo  = logo_file
+      logo  = "logo-negativ.png",
+      links = config$header_links
     ),
 
     corporate_content(

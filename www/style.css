@@ -1,7 +1,6 @@
 /* Application Stylesheet.
    Defines layout and structural styles for the ZHAW Shiny dashboard template.
    This file contains presentation rules only.
-   Branding decisions and runtime logic are handled in R.
 */
 
 /* Design tokens (global spacing variables) */
@@ -92,12 +91,36 @@ a:hover {
   display: block;
 }
 
-/* Title: white text on blue header */
+/* Title: white text on blue header; flex: 1 lets it compress so nav links stay visible */
 .app-title {
   color: #ffffff;
   margin: 0;
   font-size: 3rem;
   font-weight: normal;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Header nav links: pushed to the right, white, small */
+.app-header-nav {
+  margin-left: auto;
+  margin-right: var(--app-padding-x);
+  display: flex;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+.app-header-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.app-header-nav a:hover {
+  text-decoration: underline;
 }
 
 /* Main content wrapper between header and footer */
@@ -111,7 +134,11 @@ a:hover {
   padding: var(--app-padding-y) var(--app-padding-x);
   background-color: #ffffff;
   font-size: 12px;
-  line-height: 1;
+  line-height: 1.6;
   text-align: left;
   color: #000000;
+}
+
+.app-footer p {
+  margin: 0;
 }
