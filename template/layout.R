@@ -66,33 +66,43 @@ corporate_content <- function(...) {
 }
 
 
-#' Corporate Footer
+#' Corporate Partner Strip
 #'
-#' Creates the footer section with legal notice and optional partner logos.
+#' Renders a band of partner logos above the footer.
+#' Returns NULL invisibly if no logos are configured.
 #'
-#' @param legal Named list passed to render_legal_notice().
 #' @param partner_logos Optional list of named lists with 'filename' and
 #'   'alt' keys, each pointing to an image file in /www.
 #'
-#' @return A <footer> tag element.
-corporate_footer <- function(legal, partner_logos = NULL) {
-  logo_els <- if (!is.null(partner_logos) && length(partner_logos) > 0) {
-    tags$div(
-      class = "app-footer-logos",
-      lapply(partner_logos, function(logo) {
-        tags$img(
-          src   = logo$filename,
-          class = "app-footer-partner-logo",
-          alt   = logo$alt
-        )
-      })
-    )
-  }
+#' @return A <div> tag element or NULL.
+corporate_partner_strip <- function(partner_logos = NULL) {
+  if (is.null(partner_logos) || length(partner_logos) == 0) return(NULL)
 
+  tags$div(
+    class = "app-partner-strip",
+    tags$span("Partners", class = "app-partner-label"),
+    lapply(partner_logos, function(logo) {
+      tags$img(
+        src   = logo$filename,
+        class = "app-partner-logo",
+        alt   = logo$alt
+      )
+    })
+  )
+}
+
+
+#' Corporate Footer
+#'
+#' Renders the legal notice footer. Always shown.
+#'
+#' @param legal Named list passed to render_legal_notice().
+#'
+#' @return A <footer> tag element.
+corporate_footer <- function(legal) {
   tags$footer(
     class = "app-footer",
-    render_legal_notice(legal),
-    logo_els
+    render_legal_notice(legal)
   )
 }
 

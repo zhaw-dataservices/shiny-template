@@ -44,9 +44,12 @@ ui <- fluidPage(
       dashboard_ui()
     ),
 
-    corporate_footer(
-      legal         = config$legal_notice,
+    corporate_partner_strip(
       partner_logos = config$partner_logos
+    ),
+
+    corporate_footer(
+      legal = config$legal_notice
     )
   )
 )
