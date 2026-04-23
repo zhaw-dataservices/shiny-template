@@ -18,11 +18,14 @@
 #'
 #' @param title Character string. Dashboard title displayed in the header.
 #' @param logo Character string. Filename of the logo located in /www.
-#' @param links Optional list of named lists with 'label' and 'url' entries,
+#' @param logo_alt Character string. Alt text for the logo image.
+#' @param links Optional list of named lists with 'label' and 'url',
 #'   rendered as navigation links on the right side of the header.
 #'
 #' @return A <header> tag element.
-corporate_header <- function(title, logo, links = NULL) {
+corporate_header <- function(title, logo,
+                             logo_alt = "Institution logo",
+                             links = NULL) {
   nav_links <- if (!is.null(links)) {
     tags$nav(
       class = "app-header-nav",
@@ -37,7 +40,7 @@ corporate_header <- function(title, logo, links = NULL) {
     tags$img(
       src = logo,
       class = "app-logo",
-      alt = "Institution logo"
+      alt = logo_alt
     ),
     tags$h1(
       title,
@@ -65,16 +68,31 @@ corporate_content <- function(...) {
 
 #' Corporate Footer
 #'
-#' Creates the footer section. Footer color is controlled by the brand CSS
-#' class on the outer `.app-page` container (e.g. `.brand-black .app-footer`).
+#' Creates the footer section with legal notice and optional partner logos.
 #'
-#' @param ... UI elements to include inside the footer.
+#' @param legal Named list passed to render_legal_notice().
+#' @param partner_logos Optional list of named lists with 'filename' and
+#'   'alt' keys, each pointing to an image file in /www.
 #'
 #' @return A <footer> tag element.
-corporate_footer <- function(...) {
+corporate_footer <- function(legal, partner_logos = NULL) {
+  logo_els <- if (!is.null(partner_logos) && length(partner_logos) > 0) {
+    tags$div(
+      class = "app-footer-logos",
+      lapply(partner_logos, function(logo) {
+        tags$img(
+          src   = logo$filename,
+          class = "app-footer-partner-logo",
+          alt   = logo$alt
+        )
+      })
+    )
+  }
+
   tags$footer(
     class = "app-footer",
-    ...
+    render_legal_notice(legal),
+    logo_els
   )
 }
 
@@ -83,7 +101,8 @@ corporate_footer <- function(...) {
 # Returns a tagList with the surrounding text preserved, or plain text if no
 # email is found.
 linkify_email <- function(text) {
-  m <- regexpr("[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}", text, perl = TRUE)
+  pattern <- "[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}"
+  m <- regexpr(pattern, text, perl = TRUE)
   if (m == -1) return(text)
   start <- as.integer(m)
   end   <- start + attr(m, "match.length") - 1
@@ -100,11 +119,11 @@ linkify_email <- function(text) {
 #'
 #' Renders legal notice from a named config list:
 #'   - institution: first line, always shown, bold
-#'   - unit:        second line (label + optional link), hidden if label is blank
+#'   - unit:        second line (label + optional link), hidden if blank
 #'   - department, institute, contact: joined by " · " on the third line;
 #'     any email address in contact is automatically made into a mailto link
 #'
-#' @param cfg Named list with keys: institution, unit, department, institute, contact.
+#' @param cfg Named list: institution, unit, department, institute, contact.
 #'
 #' @return A tagList of <p> elements.
 render_legal_notice <- function(cfg) {

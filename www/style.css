@@ -19,6 +19,10 @@
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 
 /* Global typography and base layout reset */
@@ -131,14 +135,31 @@ a:hover {
 
 /* Footer section containing legal and institutional information */
 .app-footer {
-  padding: var(--app-padding-y) var(--app-padding-x);
+  padding: 12px 30px;
   background-color: #ffffff;
+  border-top: 1px solid #e6e6e6;
   font-size: 12px;
   line-height: 1.6;
-  text-align: left;
   color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .app-footer p {
   margin: 0;
+}
+
+.app-footer-logos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.app-footer-partner-logo {
+  height: 32px;
+  width: auto;
+  display: block;
 }

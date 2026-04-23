@@ -34,9 +34,10 @@ ui <- fluidPage(
     class = "app-page",
 
     corporate_header(
-      title = config$title,
-      logo  = "logo-negativ.png",
-      links = config$header_links
+      title    = config$title,
+      logo     = "zhaw-logo-negativ.png",
+      logo_alt = "ZHAW Zurich University of Applied Sciences",
+      links    = config$header_links
     ),
 
     corporate_content(
@@ -44,7 +45,8 @@ ui <- fluidPage(
     ),
 
     corporate_footer(
-      render_legal_notice(config$legal_notice)
+      legal         = config$legal_notice,
+      partner_logos = config$partner_logos
     )
   )
 )

@@ -15,3 +15,9 @@ legal_notice:
   department: "Department"
   institute: "Institute"
   contact: "Contact"
+
+partner_logos:
+  - filename: logoipsum-349.png
+    alt: "Ipsum logo 1"
+  - filename: logoipsum-354.png
+    alt: "Ipsum logo 2"
