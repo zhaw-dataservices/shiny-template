@@ -21,7 +21,6 @@ penguins_data <- palmerpenguins::penguins
 #'
 #' @return None. Registers reactive behavior.
 dashboard_server <- function(input, output, session) {
-
   filtered <- reactive({
     df <- penguins_data
     if (input$species != "All") df <- df[df$species == input$species, ]
@@ -30,43 +29,44 @@ dashboard_server <- function(input, output, session) {
 
   output$scatter <- renderPlot({
     df <- filtered()
-    x  <- df[[input$x_var]]
-    y  <- df[[input$y_var]]
+    x <- df[[input$x_var]]
+    y <- df[[input$y_var]]
     col <- c(Adelie = "#0064a6", Chinstrap = "#e87d00", Gentoo = "#5a9b5a")
     plot(x, y,
-      col  = col[as.character(df$species)],
-      pch  = 19,
+      col = col[as.character(df$species)],
+      pch = 19,
       xlab = input$x_var,
       ylab = input$y_var,
       main = paste(input$y_var, "vs", input$x_var)
     )
     legend("topleft",
       legend = names(col),
-      col    = col,
-      pch    = 19,
-      bty    = "n"
+      col = col,
+      pch = 19,
+      bty = "n"
     )
   })
 
   output$summary <- renderTable({
     df <- filtered()
+    vars <- c(
+      "bill_length_mm", "bill_depth_mm",
+      "flipper_length_mm", "body_mass_g"
+    )
     data.frame(
-      Variable = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"),
-      Mean     = sapply(c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"),
-                   function(v) round(mean(df[[v]], na.rm = TRUE), 1)),
-      SD       = sapply(c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"),
-                   function(v) round(sd(df[[v]], na.rm = TRUE), 1)),
-      Min      = sapply(c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"),
-                   function(v) round(min(df[[v]], na.rm = TRUE), 1)),
-      Max      = sapply(c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"),
-                   function(v) round(max(df[[v]], na.rm = TRUE), 1)),
+      Variable = vars,
+      Mean = sapply(vars, function(v) round(mean(df[[v]], na.rm = TRUE), 1)),
+      SD = sapply(vars, function(v) round(sd(df[[v]], na.rm = TRUE), 1)),
+      Min = sapply(vars, function(v) round(min(df[[v]], na.rm = TRUE), 1)),
+      Max = sapply(vars, function(v) round(max(df[[v]], na.rm = TRUE), 1)),
       row.names = NULL
     )
   })
 
   output$table <- renderTable({
-    head(filtered()[, c("species", "island", "bill_length_mm", "bill_depth_mm",
-                        "flipper_length_mm", "body_mass_g", "sex")], 50)
+    head(filtered()[, c(
+      "species", "island", "bill_length_mm", "bill_depth_mm",
+      "flipper_length_mm", "body_mass_g", "sex"
+    )], 50)
   })
-
 }

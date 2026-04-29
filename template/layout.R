@@ -76,16 +76,18 @@ corporate_content <- function(...) {
 #'
 #' @return A <div> tag element or NULL.
 corporate_partner_strip <- function(partner_logos = NULL) {
-  if (is.null(partner_logos) || length(partner_logos) == 0) return(NULL)
+  if (is.null(partner_logos) || length(partner_logos) == 0) {
+    return(NULL)
+  }
 
   tags$div(
     class = "app-partner-strip",
     tags$span("Partners", class = "app-partner-label"),
     lapply(partner_logos, function(logo) {
       tags$img(
-        src   = logo$filename,
+        src = logo$filename,
         class = "app-partner-logo",
-        alt   = logo$alt
+        alt = logo$alt
       )
     })
   )
@@ -113,9 +115,11 @@ corporate_footer <- function(legal) {
 linkify_email <- function(text) {
   pattern <- "[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}"
   m <- regexpr(pattern, text, perl = TRUE)
-  if (m == -1) return(text)
+  if (m == -1) {
+    return(text)
+  }
   start <- as.integer(m)
-  end   <- start + attr(m, "match.length") - 1
+  end <- start + attr(m, "match.length") - 1
   email <- substr(text, start, end)
   tagList(
     substr(text, 1, start - 1),
@@ -139,17 +143,21 @@ linkify_email <- function(text) {
 render_legal_notice <- function(cfg) {
   lines <- list()
 
-  if (!is.null(cfg$institution) && nzchar(cfg$institution))
+  if (!is.null(cfg$institution) && nzchar(cfg$institution)) {
     lines <- c(lines, list(tags$p(tags$strong(cfg$institution))))
+  }
 
   if (!is.null(cfg$unit$label) && nzchar(cfg$unit$label)) {
     has_link <- !is.null(cfg$unit$link_url) && nzchar(cfg$unit$link_url) &&
-                !is.null(cfg$unit$link_text) && nzchar(cfg$unit$link_text)
-    unit_el <- if (has_link)
-      tagList(cfg$unit$label, " · ",
-        tags$a(href = cfg$unit$link_url, cfg$unit$link_text, target = "_blank"))
-    else
+      !is.null(cfg$unit$link_text) && nzchar(cfg$unit$link_text)
+    unit_el <- if (has_link) {
+      tagList(
+        cfg$unit$label, " · ",
+        tags$a(href = cfg$unit$link_url, cfg$unit$link_text, target = "_blank")
+      )
+    } else {
       cfg$unit$label
+    }
     lines <- c(lines, list(tags$p(unit_el)))
   }
 
@@ -157,8 +165,9 @@ render_legal_notice <- function(cfg) {
   parts <- list()
   for (key in c("department", "institute", "contact")) {
     val <- cfg[[key]]
-    if (!is.null(val) && nzchar(val))
+    if (!is.null(val) && nzchar(val)) {
       parts <- c(parts, list(if (key == "contact") linkify_email(val) else val))
+    }
   }
   if (length(parts) > 0) {
     interleaved <- list()
