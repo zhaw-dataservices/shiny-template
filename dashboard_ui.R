@@ -27,46 +27,7 @@ dashboard_ui <- function(title = NULL) {
 
   tagList(
     h2(app_title),
-    p(paste0(
-      "Explore body measurements of three penguin species observed on ",
-      "islands in the Palmer Archipelago, Antarctica."
-    )),
-    fluidRow(
-      column(
-        4,
-        selectInput("species", "Species",
-          choices = c("All", "Adelie", "Chinstrap", "Gentoo"),
-          selected = "All"
-        )
-      ),
-      column(
-        4,
-        selectInput("x_var", "X axis",
-          choices = c(
-            "bill_length_mm", "bill_depth_mm",
-            "flipper_length_mm", "body_mass_g"
-          ),
-          selected = "bill_length_mm"
-        )
-      ),
-      column(
-        4,
-        selectInput("y_var", "Y axis",
-          choices = c(
-            "bill_length_mm", "bill_depth_mm",
-            "flipper_length_mm", "body_mass_g"
-          ),
-          selected = "flipper_length_mm"
-        )
-      )
-    ),
-    plotOutput("scatter", height = "400px"),
-    hr(),
-    h3("Summary statistics"),
-    tableOutput("summary"),
-    hr(),
-    h3("Raw data"),
-    p("Showing first 50 rows."),
-    tableOutput("table")
+    p("Replace this text with a short description of your dashboard.")
+    # --- Add your inputs and outputs here ---
   )
 }
