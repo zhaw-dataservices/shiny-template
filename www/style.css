@@ -108,10 +108,16 @@ a:hover {
   white-space: nowrap;
 }
 
-/* Header nav links: pushed to the right, white, small */
-.app-header-nav {
+/* Header right-side controls: nav links + language selector */
+.app-header-controls {
   margin-left: auto;
   margin-right: var(--app-padding-x);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.app-header-nav {
   display: flex;
   gap: 20px;
   font-size: 1.5rem;
@@ -125,6 +131,26 @@ a:hover {
 
 .app-header-nav a:hover {
   text-decoration: underline;
+}
+
+/* Language selector: borderless select styled for the blue header */
+.app-lang-selector .form-group {
+  margin-bottom: 0;
+}
+
+.app-lang-selector select {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  font-size: 1.4rem;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.app-lang-selector select option {
+  background-color: #0064a6;
+  color: #ffffff;
 }
 
 /* Main content wrapper between header and footer */

@@ -1,0 +1,9 @@
+{
+  "languages": ["en", "de"],
+  "translation": [
+    {"en": "Partners",         "de": "Partner"},
+    {"en": "Project Database", "de": "Projektdatenbank"},
+    {"en": "ORD",              "de": "ORD"},
+    {"en": "Dashboard content","de": "Dashboard-Inhalt"}
+  ]
+}
