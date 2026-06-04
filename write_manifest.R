@@ -18,6 +18,8 @@ args <- commandArgs(trailingOnly = FALSE)
 script_flag <- args[startsWith(args, "--file=")]
 if (length(script_flag) == 1) {
   app_dir <- normalizePath(dirname(sub("--file=", "", script_flag)))
+} else if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+  app_dir <- normalizePath(dirname(rstudioapi::getSourceEditorContext()$path))
 } else {
   app_dir <- getwd()
 }
