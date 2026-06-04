@@ -31,7 +31,12 @@
         "Repository": "CRAN",
         "Date/Publication": "2025-08-19 08:30:19 UTC",
         "Built": "R 4.6.0; aarch64-apple-darwin23; 2026-04-25 19:11:17 UTC; unix",
-        "Archs": "PKI.so.dSYM"
+        "Archs": "PKI.so.dSYM",
+        "RemoteType": "standard",
+        "RemotePkgRef": "PKI",
+        "RemoteRef": "PKI",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "0.1-15"
       }
     },
     "R6": {
@@ -127,7 +132,12 @@
         "Repository": "CRAN",
         "Date/Publication": "2025-03-08 14:30:06 UTC",
         "Built": "R 4.6.0; aarch64-apple-darwin23; 2026-04-25 15:50:47 UTC; unix",
-        "Archs": "RcppTOML.so.dSYM"
+        "Archs": "RcppTOML.so.dSYM",
+        "RemoteType": "standard",
+        "RemotePkgRef": "RcppTOML",
+        "RemoteRef": "RcppTOML",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "0.2.3"
       }
     },
     "askpass": {
@@ -155,7 +165,12 @@
         "Repository": "CRAN",
         "Date/Publication": "2024-10-04 07:20:03 UTC",
         "Built": "R 4.6.0; aarch64-apple-darwin23; 2026-04-25 23:17:34 UTC; unix",
-        "Archs": "askpass.so.dSYM"
+        "Archs": "askpass.so.dSYM",
+        "RemoteType": "standard",
+        "RemotePkgRef": "askpass",
+        "RemoteRef": "askpass",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "1.2.1"
       }
     },
     "base64enc": {
@@ -352,7 +367,12 @@
         "Repository": "CRAN",
         "Date/Publication": "2026-04-22 09:40:02 UTC",
         "Built": "R 4.6.0; aarch64-apple-darwin23; 2026-04-25 09:29:32 UTC; unix",
-        "Archs": "curl.so.dSYM"
+        "Archs": "curl.so.dSYM",
+        "RemoteType": "standard",
+        "RemotePkgRef": "curl",
+        "RemoteRef": "curl",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "7.1.0"
       }
     },
     "digest": {
@@ -632,7 +652,12 @@
         "Maintainer": "Hadley Wickham <hadley@posit.co>",
         "Repository": "CRAN",
         "Date/Publication": "2025-12-08 09:50:02 UTC",
-        "Built": "R 4.6.0; ; 2026-04-26 05:17:04 UTC; unix"
+        "Built": "R 4.6.0; ; 2026-04-26 05:17:04 UTC; unix",
+        "RemoteType": "standard",
+        "RemotePkgRef": "httr2",
+        "RemoteRef": "httr2",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "1.2.2"
       }
     },
     "jose": {
@@ -661,7 +686,12 @@
         "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
         "Repository": "CRAN",
         "Date/Publication": "2026-04-22 06:40:03 UTC",
-        "Built": "R 4.6.0; ; 2026-04-26 02:29:16 UTC; unix"
+        "Built": "R 4.6.0; ; 2026-04-26 02:29:16 UTC; unix",
+        "RemoteType": "standard",
+        "RemotePkgRef": "jose",
+        "RemoteRef": "jose",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "2.0.0"
       }
     },
     "jquerylib": {
@@ -920,7 +950,12 @@
         "Repository": "CRAN",
         "Date/Publication": "2026-05-14 14:50:14 UTC",
         "Built": "R 4.6.0; aarch64-apple-darwin23; 2026-05-14 19:24:59 UTC; unix",
-        "Archs": "openssl.so.dSYM"
+        "Archs": "openssl.so.dSYM",
+        "RemoteType": "standard",
+        "RemotePkgRef": "openssl",
+        "RemoteRef": "openssl",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "2.4.1"
       }
     },
     "otel": {
@@ -981,7 +1016,12 @@
         "Maintainer": "Aron Atkins <aron@posit.co>",
         "Repository": "CRAN",
         "Date/Publication": "2025-06-16 20:00:02 UTC",
-        "Built": "R 4.6.0; ; 2026-04-25 17:41:47 UTC; unix"
+        "Built": "R 4.6.0; ; 2026-04-25 17:41:47 UTC; unix",
+        "RemoteType": "standard",
+        "RemotePkgRef": "packrat",
+        "RemoteRef": "packrat",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "0.9.3"
       }
     },
     "promises": {
@@ -1085,7 +1125,12 @@
         "Maintainer": "Kevin Ushey <kevin@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2026-05-16 21:50:15 UTC",
-        "Built": "R 4.6.0; ; 2026-05-17 02:15:01 UTC; unix"
+        "Built": "R 4.6.0; ; 2026-05-17 02:15:01 UTC; unix",
+        "RemoteType": "standard",
+        "RemotePkgRef": "renv",
+        "RemoteRef": "renv",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "1.2.3"
       }
     },
     "rlang": {
@@ -1155,7 +1200,12 @@
         "Maintainer": "Aron Atkins <aron@posit.co>",
         "Repository": "CRAN",
         "Date/Publication": "2026-04-10 06:50:08 UTC",
-        "Built": "R 4.6.0; ; 2026-04-26 07:36:27 UTC; unix"
+        "Built": "R 4.6.0; ; 2026-04-26 07:36:27 UTC; unix",
+        "RemoteType": "standard",
+        "RemotePkgRef": "rsconnect",
+        "RemoteRef": "rsconnect",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "1.8.0"
       }
     },
     "rstudioapi": {
@@ -1313,7 +1363,12 @@
         "Maintainer": "E. David Aja <david@posit.co>",
         "Repository": "CRAN",
         "Date/Publication": "2026-02-25 06:30:23 UTC",
-        "Built": "R 4.6.0; ; 2026-04-26 03:44:05 UTC; unix"
+        "Built": "R 4.6.0; ; 2026-04-26 03:44:05 UTC; unix",
+        "RemoteType": "standard",
+        "RemotePkgRef": "snowflakeauth",
+        "RemoteRef": "snowflakeauth",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "0.2.2"
       }
     },
     "sourcetools": {
@@ -1442,7 +1497,12 @@
         "Repository": "CRAN",
         "Date/Publication": "2024-10-04 09:40:02 UTC",
         "Built": "R 4.6.0; aarch64-apple-darwin23; 2026-04-25 15:48:55 UTC; unix",
-        "Archs": "sys.so.dSYM"
+        "Archs": "sys.so.dSYM",
+        "RemoteType": "standard",
+        "RemotePkgRef": "sys",
+        "RemoteRef": "sys",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "3.4.3"
       }
     },
     "vctrs": {
@@ -1589,28 +1649,28 @@
       "checksum": "4b3720d5a15045180ebe27f635588bc6"
     },
     "app.R": {
-      "checksum": "1551d09e084ae9f4debe35322741b6e4"
+      "checksum": "d434d8eb09a484be3ee5c58d8c344938"
     },
     "config.yml": {
-      "checksum": "1e11f28562f74040f001ce720e27b7fb"
+      "checksum": "832a11dae5618b846c4398f01dc517a8"
     },
     "dashboard_server.R": {
       "checksum": "205390798cf5d0b6e52e4908fa48a0f8"
     },
     "dashboard_ui.R": {
-      "checksum": "458b0e4140ce67405e7eb38824fff9a4"
+      "checksum": "229e2a79ab495fb079db2c9ac06507da"
     },
     "README.md": {
-      "checksum": "0e15bb8229e9bb7529ac5526440f6779"
+      "checksum": "524a1a0c4d44a93494b5d3ba811b617a"
     },
     "template/layout.R": {
-      "checksum": "7c773f8593cecec3284ec3342ec2d9f0"
+      "checksum": "7594f6d45804e704dc62518e8a2b32aa"
     },
     "write_manifest.R": {
       "checksum": "689951162cdbb5a904d72a8ee0fc619d"
     },
     "www/i18n/translation.json": {
-      "checksum": "8de9e6149af7ff105d597fde176c3fa0"
+      "checksum": "c5b9351941b4b024e330e21ed4aef538"
     },
     "www/logoipsum-349.png": {
       "checksum": "90c97cc8099241f2f9ae3504abd3f8de"
@@ -1619,10 +1679,13 @@
       "checksum": "a10fce7167c377cbbaa3c554cb38cfac"
     },
     "www/style.css": {
-      "checksum": "2ed5be9a8d7285ca6a4bbaae033ac5ec"
+      "checksum": "b8e85deb0c91a0b9d4cf0ae143c6810c"
     },
     "www/zhaw-logo-negative.png": {
       "checksum": "cb5e5cf9df76f0d7074c1216f4c0c8a7"
+    },
+    "www/zhaw-logo-positive.png": {
+      "checksum": "781e9f738bc7f47689e118c453b4c9ea"
     }
   },
   "users": null
