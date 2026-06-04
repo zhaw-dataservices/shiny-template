@@ -1,9 +1,9 @@
 title: "Dashboard Title"
 
 header_links:
-  - label: "Datenschutz"
+  - label: "Privacy Policy"
     url: "https://www.zhaw.ch/de/datenschutz/"
-  - label: "Rechtliche Hinweise"
+  - label: "Legal Notice"
     url: "https://www.zhaw.ch/de/rechtliche-hinweise/"
 
 legal_notice:
@@ -23,11 +23,9 @@ partner_logos:                           # image files go in www/
     alt: "Partner name 2"
 
 references:                              # remove entries to hide
-  project_database:
-    - label: "Project name"
-      url: "https://..."
-  ord:
-    - label: "GitHub repository"
-      url: "https://github.com/..."
-    - label: "Data repository"
-      url: "https://zenodo.org/..."
+  - label: "Project name"
+    url: "https://..."
+  - label: "GitHub repository"
+    url: "https://github.com/..."
+  - label: "Data repository"
+    url: "https://zenodo.org/..."

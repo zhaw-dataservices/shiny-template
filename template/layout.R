@@ -23,17 +23,21 @@
 #'   rendered as navigation links on the right side of the header.
 #' @param lang_selector Optional Shiny UI element (e.g. selectInput) for
 #'   language switching, rendered to the right of the navigation links.
+#' @param i18n Optional shiny.i18n Translator object for translating link labels.
 #'
 #' @return A <header> tag element.
 corporate_header <- function(title, logo,
                              logo_alt = "Institution logo",
                              links = NULL,
-                             lang_selector = NULL) {
+                             lang_selector = NULL,
+                             i18n = NULL) {
+  tr <- function(x) if (!is.null(i18n)) i18n$t(x) else x
+
   nav_links <- if (!is.null(links)) {
     tags$nav(
       class = "app-header-nav",
       lapply(links, function(link) {
-        tags$a(href = link$url, link$label, target = "_blank")
+        tags$a(href = link$url, tr(link$label), target = "_blank")
       })
     )
   }
@@ -54,7 +58,7 @@ corporate_header <- function(title, logo,
       alt = logo_alt
     ),
     tags$h1(
-      title,
+      tr(title),
       class = "app-title"
     ),
     controls
@@ -113,55 +117,29 @@ corporate_partner_strip <- function(partner_logos = NULL, i18n = NULL) {
 #' Renders the legal notice footer. Always shown.
 #'
 #' @param legal Named list passed to render_legal_notice().
-#' @param references Optional named list with keys 'project_database' and 'ord',
-#'   each a list of named lists with 'label' and 'url'. Omitted sections are hidden.
-#' @param i18n Optional shiny.i18n Translator object for translating labels.
+#' @param references Optional list of named lists with 'label' and 'url'.
+#'   Each entry is rendered as a standalone link. Omit or set NULL to hide.
 #'
 #' @return A <footer> tag element.
-corporate_footer <- function(legal, references = NULL, i18n = NULL) {
+corporate_footer <- function(legal, references = NULL) {
   tags$footer(
     class = "app-footer",
     render_legal_notice(legal),
-    render_references(references, i18n = i18n)
+    render_references(references)
   )
 }
 
 
-# Renders a cross-reference section from a named list with optional keys
-# 'project_database' and 'ord', each a list of {label, url} entries.
-# Returns NULL if both sections are absent or empty.
-render_references <- function(cfg, i18n = NULL) {
-  if (is.null(cfg)) return(NULL)
+# Renders a flat list of {label, url} entries as individual links.
+# Returns NULL if the list is absent or empty.
+render_references <- function(cfg) {
+  if (is.null(cfg) || length(cfg) == 0) return(NULL)
 
-  tr <- function(x) if (!is.null(i18n)) i18n$t(x) else x
+  rows <- lapply(cfg, function(l) {
+    tags$p(tags$a(href = l$url, l$label, target = "_blank"))
+  })
 
-  make_link_row <- function(section_label, links) {
-    if (is.null(links) || length(links) == 0) return(NULL)
-    link_tags <- lapply(links, function(l) {
-      tags$a(href = l$url, l$label, target = "_blank")
-    })
-    interleaved <- list()
-    for (i in seq_along(link_tags)) {
-      interleaved <- c(interleaved, list(link_tags[[i]]))
-      if (i < length(link_tags)) interleaved <- c(interleaved, list(" · "))
-    }
-    tags$p(
-      tags$span(section_label, ": ", class = "app-footer-ref-label"),
-      do.call(tagList, interleaved)
-    )
-  }
-
-  rows <- list(
-    make_link_row(tr("Project Database"), cfg$project_database),
-    make_link_row(tr("ORD"),              cfg$ord)
-  )
-  rows <- Filter(Negate(is.null), rows)
-  if (length(rows) == 0) return(NULL)
-
-  tagList(
-    tags$hr(class = "app-footer-divider"),
-    do.call(tagList, rows)
-  )
+  do.call(tagList, rows)
 }
 
 

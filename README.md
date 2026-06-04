@@ -100,40 +100,25 @@ legal_notice:
 
 ---
 
-## Languages
+## Multilingual support (optional)
 
-The template ships with English and German support via [`shiny.i18n`](https://github.com/Appsilon/shiny.i18n).
-A language selector is shown in the header — no configuration needed to use it.
+The template ships with English/German support via [`shiny.i18n`](https://github.com/Appsilon/shiny.i18n). You don't need to use it — if you only need one language, just write plain strings.
 
-### Translating your own strings
+To make a string translatable:
 
-1. Open [www/i18n/translation.json](www/i18n/translation.json) and add a row for each string you want to translate:
+1. Add a row to `www/i18n/translation.json`:
 
 ```json
-{
-  "languages": ["en", "de"],
-  "translation": [
-    {"en": "My label", "de": "Meine Beschriftung"}
-  ]
-}
+{"en": "My label", "de": "Meine Beschriftung"}
 ```
 
-2. In `dashboard_ui.R`, wrap the string with `tr()`:
+2. Wrap the string with `tr()` in `dashboard_ui.R`:
 
 ```r
 p(tr("My label"))
 ```
 
-`tr()` is already defined at the top of `dashboard_ui()` — it calls `i18n$t()` when a translator is available and falls back to the raw string otherwise.
-
-### Adding a language
-
-1. Add the language code to the `"languages"` array in `translation.json` and add a translation column to every row.
-2. Add a choice to the `selectInput` in `app.R`:
-
-```r
-choices = c("English" = "en", "Deutsch" = "de", "Français" = "fr")
-```
+`tr()` is available inside `dashboard_ui()` — it translates when a language is selected and falls back to the raw string otherwise.
 
 ---
 

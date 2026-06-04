@@ -24,7 +24,7 @@ if (is.null(config$title) || !nzchar(config$title)) {
 }
 
 i18n <- Translator$new(translation_json_path = "www/i18n/translation.json")
-i18n$set_translation_language("en")
+i18n$set_translation_language("de")
 
 source("template/layout.R")
 source("dashboard_ui.R")
@@ -42,11 +42,12 @@ ui <- fluidPage(
       logo = "zhaw-logo-negativ.png",
       logo_alt = "ZHAW Zurich University of Applied Sciences",
       links = config$header_links,
+      i18n = i18n,
       lang_selector = selectInput(
         "selected_language",
         label = NULL,
-        choices = c("English" = "en", "Deutsch" = "de"),
-        selected = "en",
+        choices = c("Deutsch" = "de", "English" = "en"),
+        selected = "de",
         width = "120px"
       )
     ),
@@ -59,8 +60,7 @@ ui <- fluidPage(
     ),
     corporate_footer(
       legal = config$legal_notice,
-      references = config$references,
-      i18n = i18n
+      references = config$references
     )
   )
 )
