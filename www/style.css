@@ -7,9 +7,9 @@
 :root {
   --app-padding-y: 10px;
   --app-padding-x: 30px;
-  /* Bootstrap 5 primary color override — ZHAW blue */
-  --bs-blue: #0064a6;
-  --bs-primary: #0064a6;
+  /* Bootstrap 5 primary color override */
+  --bs-blue: #333333;
+  --bs-primary: #333333;
   /* Logo size and Schutzzone (= 1/3 of logo height on all sides, per ZHAW CD) */
   --logo-height: 40px;
   --schutzzone: calc(var(--logo-height) / 3);
@@ -27,9 +27,9 @@
 
 /* Global typography and base layout reset */
 html, body {
-  font-family: Arial, Helvetica, sans-serif; /* Arial is mandatory per ZHAW CD */
+  font-family: Arial, Helvetica, sans-serif;
   background-color: #ffffff;
-  color: #000000;
+  color: #333333;
   height: 100%;
   margin: 0;
 }
@@ -51,7 +51,7 @@ button {
 
 /* Links */
 a {
-  color: #0064a6; /* ZHAW blue */
+  color: #333333;
   text-decoration: none;
 }
 
@@ -61,7 +61,7 @@ a:hover {
 
 /* Tabs */
 .nav-tabs {
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid #333333;
 }
 
 .nav-tabs .nav-link {
@@ -70,7 +70,7 @@ a:hover {
 }
 
 .nav-tabs .nav-link.active {
-  border-bottom: 2px solid #0064a6; /* ZHAW blue */
+  border-bottom: 2px solid #333333;
 }
 
 /* Main application layout container */
@@ -85,7 +85,8 @@ a:hover {
   padding: 0;
   display: flex;
   align-items: center;
-  background-color: #0064a6; /* ZHAW blue */
+  background-color: #ffffff;
+  border-bottom: 1px solid #333333;
 }
 
 /* Logo: Schutzzone = 1/3 of logo height on all sides (per ZHAW CD) */
@@ -95,9 +96,9 @@ a:hover {
   display: block;
 }
 
-/* Title: white text on blue header; flex: 1 lets it compress so nav links stay visible */
+/* Title: flex: 1 lets it compress so nav links stay visible */
 .app-title {
-  color: #ffffff;
+  color: #333333;
   margin: 0;
   font-size: 3rem;
   font-weight: normal;
@@ -124,7 +125,7 @@ a:hover {
 }
 
 .app-header-nav a {
-  color: #ffffff;
+  color: #333333;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -133,15 +134,15 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Language selector: borderless select styled for the blue header */
+/* Language selector: borderless select styled for the white header */
 .app-lang-selector .form-group {
   margin-bottom: 0;
 }
 
 .app-lang-selector select {
   background-color: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #333333;
+  border: 1px solid #333333;
   border-radius: 4px;
   font-size: 1.4rem;
   padding: 2px 6px;
@@ -149,8 +150,8 @@ a:hover {
 }
 
 .app-lang-selector select option {
-  background-color: #0064a6;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #333333;
 }
 
 /* Main content wrapper between header and footer */
@@ -165,15 +166,15 @@ a:hover {
   align-items: center;
   gap: 16px;
   padding: 12px 30px;
-  background-color: #f0f4f8;
-  border-top: 1px solid #dde3ea;
+  background-color: #ffffff;
+  border-top: 1px solid #333333;
 }
 
 .app-partner-label {
   font-size: 14px;
-  color: #666666;
+  color: #333333;
   padding-right: 16px;
-  border-right: 0.5px solid #dde3ea;
+  border-right: 0.5px solid #333333;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -190,10 +191,10 @@ a:hover {
 .app-footer {
   padding: 10px 30px;
   background-color: #ffffff;
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid #333333;
   font-size: 14px;
   line-height: 1.6;
-  color: #000000;
+  color: #333333;
 }
 
 .app-footer p {
@@ -202,7 +203,6 @@ a:hover {
 
 .app-footer-divider {
   border: none;
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid #333333;
   margin: 8px 0;
 }
-

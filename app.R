@@ -39,7 +39,7 @@ ui <- fluidPage(
     class = "app-page",
     corporate_header(
       title = config$title,
-      logo = "zhaw-logo-negativ.png",
+      logo = "zhaw-logo-positive.png",
       logo_alt = "ZHAW Zurich University of Applied Sciences",
       links = config$header_links,
       i18n = i18n,
