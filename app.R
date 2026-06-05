@@ -9,8 +9,26 @@
 #
 # Application-specific content should be defined in `dashboard_ui.R`.
 # Application logic should be defined in `dashboard_server.R`.
+#
+# EXCEPTION: If auto-detection of the working directory fails, uncomment and
+# set app_dir manually in the line directly below this header.
 # -----------------------------------------------------------------------------
 
+# app_dir <- "/path/to/your/app"
+
+if (!exists("app_dir")) {
+  args <- commandArgs(trailingOnly = FALSE)
+  script_flag <- args[startsWith(args, "--file=")]
+  if (length(script_flag) == 1) {
+    app_dir <- normalizePath(dirname(sub("--file=", "", script_flag)))
+  } else if (requireNamespace("rstudioapi", quietly = TRUE) &&
+             rstudioapi::isAvailable()) {
+    app_dir <- normalizePath(dirname(rstudioapi::getSourceEditorContext()$path))
+  } else {
+    app_dir <- getwd()
+  }
+}
+setwd(app_dir)
 
 library(shiny)
 library(yaml)
@@ -74,3 +92,4 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui, server)
+# shiny::runApp()
