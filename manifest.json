@@ -1681,11 +1681,8 @@
     "www/style.css": {
       "checksum": "b8e85deb0c91a0b9d4cf0ae143c6810c"
     },
-    "www/zhaw-logo-negative.png": {
-      "checksum": "cb5e5cf9df76f0d7074c1216f4c0c8a7"
-    },
-    "www/zhaw-logo-positive.png": {
-      "checksum": "781e9f738bc7f47689e118c453b4c9ea"
+    "www/zhaw-logo.svg": {
+      "checksum": "2b72b3f7d7a126fb9f9f7319080babf5"
     }
   },
   "users": null

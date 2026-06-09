@@ -11,7 +11,7 @@
   --bs-blue: #333333;
   --bs-primary: #333333;
   /* Logo size and Schutzzone (= 1/3 of logo height on all sides, per ZHAW CD) */
-  --logo-height: 40px;
+  --logo-height: 50px;
   --schutzzone: calc(var(--logo-height) / 3);
 }
 
